@@ -3,12 +3,27 @@ package com.example.task1anagrams;
 import android.text.TextUtils;
 import java.util.ArrayList;
 
-public class ReverseText extends MainActivity {
+public class ReverseText {
+    public static String reverseText(String myString, char[] inputTextToArray) {
 
-    public static int exceptionIndex = 0;
-    public static String exceptionsString = "";
+        ArrayList<Character> listOfExceptions = new ArrayList<Character>();
+        StringBuilder tempExceptionString = new StringBuilder();
 
-    public String reverseText(String myString) {
+        for (char c : inputTextToArray) {
+            if (c != ' ') {
+                tempExceptionString.append(c);
+            }
+        }
+        char[] exceptions = tempExceptionString.toString().toCharArray();
+
+        for (char exception : exceptions) {
+            if (!listOfExceptions.contains(exception)) {
+                listOfExceptions.add(exception);
+            }
+        }
+        String exceptionsString = TextUtils.join("", listOfExceptions);
+
+
         ArrayList<Character> listFinal = new ArrayList<>();
 
         char[] allExceptionsArray = exceptionsString.toCharArray();
@@ -22,14 +37,14 @@ public class ReverseText extends MainActivity {
 
         for (String word : splitWords) {
 
-            char[] inputTextToArray = word.toCharArray();
+            char[] wordArray = word.toCharArray();
             ArrayList<Character> listInput = new ArrayList<>();
 
-            for (char inputSymbol : inputTextToArray) {
+            for (char inputSymbol : wordArray) {
                 listInput.add(inputSymbol);
             }
 
-            exceptionIndex = 0;
+            int exceptionIndex = 0;
             int startIndex = 0;
             int lastIndex = listInput.size() - 1;
             outer:
@@ -79,31 +94,6 @@ public class ReverseText extends MainActivity {
             listFinal.add(' ');
         }
         return TextUtils.join("", listFinal);
-    }
-
-    public String addExceptionSymbol(char[] inputTextToArray) {
-        ArrayList<Character> listOfExceptions = new ArrayList<Character>();
-        StringBuilder tempExceptionString = new StringBuilder();
-
-        for (char c : inputTextToArray) {
-            if (c != ' ') {
-                tempExceptionString.append(c);
-            }
-        }
-        char[] exceptions = tempExceptionString.toString().toCharArray();
-
-        for (char exception : exceptions) {
-            if (!listOfExceptions.contains(exception)) {
-                listOfExceptions.add(exception);
-            }
-        }
-        exceptionsString = TextUtils.join("", listOfExceptions);
-        return exceptionsString;
-    }
-
-    public void clearExceptions() {
-        exceptionsString = "";
-        exceptionIndex = 0;
     }
 
 }
