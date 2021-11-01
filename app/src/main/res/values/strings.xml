@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Task1Anagrams</string>
+    <string name="app_name">Anagrams</string>
+    <string name="type_a_word_hint">Type a word</string>
+    <string name="convert_btn">convert</string>
+    <string name="add_exception_symbol_hint">Add exception symbol</string>
 </resources>

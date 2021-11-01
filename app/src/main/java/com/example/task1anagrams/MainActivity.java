@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button btnConvert;
-    public EditText inputEdt, exceptionEdt;
-    public TextView reverseTextV;
+    private Button btnConvert;
+    private EditText inputEdt, exceptionEdt;
+    private TextView reverseTextV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
