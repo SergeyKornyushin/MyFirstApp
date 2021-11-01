@@ -1,41 +1,17 @@
 package com.example.task1anagrams;
 
-import android.text.TextUtils;
-import java.util.ArrayList;
-
 public class ReverseText {
-    public static String reverseText(String myString, char[] inputTextToArray) {
 
-        ArrayList<Character> listOfExceptions = new ArrayList<Character>();
-        StringBuilder tempExceptionString = new StringBuilder();
+    public static String reverseString(String inputText, String inputExceptions){
+        StringBuilder finalString = new StringBuilder();
 
-        for (char c : inputTextToArray) {
-            if (c != ' ') {
-                tempExceptionString.append(c);
-            }
-        }
-        char[] exceptions = tempExceptionString.toString().toCharArray();
+        String[] splitWords = inputText.split(" ");
+        for (String word : splitWords){
+            finalString.append(reverseWord(word, inputExceptions)).append(" ");
+        } return finalString.toString();
+    }
 
-        for (char exception : exceptions) {
-            if (!listOfExceptions.contains(exception)) {
-                listOfExceptions.add(exception);
-            }
-        }
-        String exceptionsString = TextUtils.join("", listOfExceptions);
-
-
-        ArrayList<Character> listFinal = new ArrayList<>();
-
-        char[] allExceptionsArray = exceptionsString.toCharArray();
-        ArrayList<Character> listExceptions = new ArrayList<>();
-
-        for (char exceptionSymbol : allExceptionsArray) {
-            listExceptions.add(exceptionSymbol);
-        }
-
-        String[] splitWords = myString.split(" ");
-
-        for (String word : splitWords) {
+    public static String reverseWord(String word, String exceptions) {
 
             char[] wordArray = word.toCharArray();
             ArrayList<Character> listInput = new ArrayList<>();
