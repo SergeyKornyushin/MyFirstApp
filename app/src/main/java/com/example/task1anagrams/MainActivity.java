@@ -2,6 +2,7 @@ package com.example.task1anagrams;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,10 +22,14 @@ public class MainActivity extends AppCompatActivity {
         exceptionEdt = findViewById(R.id.edt_exception_symbols);
         reverseTextV = findViewById(R.id.txt_reverse);
 
-        btnConvert.setOnClickListener(view -> {
-            reverseTextV.setText(ReverseText.reverseString(inputEdt.getText().toString(),
-                    exceptionEdt.getText().toString())
-            );
+        btnConvert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reverseTextV.setText("");
+                reverseTextV.setText(ReverseText.reverseText(inputEdt.getText().toString(),
+                        exceptionEdt.getText().toString().toCharArray())
+                );
+            }
         });
 
     }
