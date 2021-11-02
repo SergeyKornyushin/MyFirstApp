@@ -18,29 +18,29 @@ public class ReverseText {
 
         int startIndex = 0;
         int lastIndex = wordArray.length - 1;
-
         while (startIndex < lastIndex) {
             char tempFirst = wordArray[startIndex];
-            while (lastIndex > startIndex) {
-                char tempLast = wordArray[lastIndex];
-                if (exceptions.length() == 0) {
-                    wordArray[startIndex] = tempLast;
-                    wordArray[lastIndex] = tempFirst;
+            char tempLast = wordArray[lastIndex];
+            if (exceptions.isEmpty()) {
+                if (!Character.isLetter(tempFirst)) {
                     startIndex++;
-                    lastIndex--;
-                    break;
-                } else if (exceptions.indexOf(tempFirst) != -1) {
-                    startIndex++;
-                    break;
-                } else if (exceptions.indexOf(tempLast) != -1) {
+                } else if (!Character.isLetter(tempLast)) {
                     lastIndex--;
                 } else {
                     wordArray[startIndex] = tempLast;
                     wordArray[lastIndex] = tempFirst;
                     startIndex++;
                     lastIndex--;
-                    break;
                 }
+            } else if (exceptions.indexOf(tempFirst) != -1) {
+                startIndex++;
+            } else if (exceptions.indexOf(tempLast) != -1) {
+                lastIndex--;
+            } else {
+                wordArray[startIndex] = tempLast;
+                wordArray[lastIndex] = tempFirst;
+                startIndex++;
+                lastIndex--;
             }
         }
         return String.valueOf(wordArray);
