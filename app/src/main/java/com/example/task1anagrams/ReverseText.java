@@ -9,7 +9,7 @@ public class ReverseText {
         for (String word : splitWords) {
             finalString.append(reverseWord(word, inputExceptions)).append(" ");
         }
-        return finalString.toString();
+        return finalString.toString().trim();
     }
 
     public static String reverseWord(String word, String exceptions) {
